@@ -5,7 +5,6 @@ public class BookstoreTest {
     public static void main(String[] args) {
         QuantumBookstoreSystem bookstore = new QuantumBookstoreSystem();
 
-        // 1. Add Books using BookFactory
         Book paperBook = BookFactory.createBook(BookType.PAPER, "ISBN001", "Java Basics", 2020, 30.0, "Alice", 10);
         Book ebook = BookFactory.createBook(BookType.EBOOK, "ISBN002", "AI for Everyone", 2022, 15.0, "Bob", "PDF");
         Book demoBook = BookFactory.createBook(BookType.DEMO, "ISBN003", "Free Preview", 2021, 0.0, "Carol");
@@ -35,14 +34,12 @@ public class BookstoreTest {
             System.out.println("ERROR - " + e.getMessage());
         }
 
-        // 5. Try to buy demo book
         try {
             bookstore.buyBook("ISBN003", 1, "user@example.com", "456 Side St");
         } catch (Exception e) {
             System.out.println("Expected Error - " + e.getMessage());
         }
 
-        // 6. Try to buy more paper books than available
         try {
             bookstore.buyBook("ISBN001", 100, "user@example.com", "789 High St");
         } catch (Exception e) {
